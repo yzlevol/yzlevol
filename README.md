@@ -5,7 +5,7 @@
 
 <!-- https://github.com/yzlevol/readme-typing-svg -->
 <p align="center">
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=2000&pause=200&color=EAEAEA&vCenter=true&multiline=true&random=false&width=600&height=150&lines=Hi!+Welcome+to+my+GitHub+page.;I+am+a+sophomore+student++at+Tongji+University%2C;majoring+in+Computer+Science.&repeat=false" alt="Typing SVG" /></a>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=2000&pause=200&color=EAEAEA&vCenter=true&multiline=true&random=false&width=600&height=150&lines=Hi!+Welcome+to+my+GitHub+page.;I+am+a+sophomore+student++at+Tongji+University%2C;majoring+in+Computer+Science.&repeat=true" alt="Typing SVG" /></a>
 </p>
 
 <!-- 贡献 -->
