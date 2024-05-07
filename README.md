@@ -42,6 +42,31 @@
 </p>
 
 <!--START_SECTION:waka-->
+![Profile Views](http://img.shields.io/badge/Profile%20Views-156-blue)
+
+**🐱 My GitHub Data** 
+
+> 📦 119.5 kB Used in GitHub's Storage 
+ > 
+> 🚫 Not Opted to Hire
+ > 
+> 📜 3 Public Repositories 
+ > 
+> 🔑 6 Private Repositories 
+ > 
+**I Mostly Code in Python** 
+
+```text
+Python                   1 repo              ██████░░░░░░░░░░░░░░░░░░░   25.00 % 
+Jupyter Notebook         1 repo              ██████░░░░░░░░░░░░░░░░░░░   25.00 % 
+C++                      1 repo              ██████░░░░░░░░░░░░░░░░░░░   25.00 % 
+Assembly                 1 repo              ██████░░░░░░░░░░░░░░░░░░░   25.00 % 
+```
+
+
+
+
+ Last Updated on 07/05/2024 18:35:07 UTC
 <!--END_SECTION:waka-->
 
 <!-- https://github.com/tandpfun/skill-icons -->
