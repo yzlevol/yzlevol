@@ -14,6 +14,7 @@
 <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=24&duration=999&pause=200&color=EAEAEA&vCenter=true&repeat=false&random=false&width=600&height=40&lines=My+Contributions%3A" alt="Typing SVG" /></a>
 </p>
 -->
+<div align="center">My Github Contributions</div>
 <p align="center">
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/yzlevol/yzlevol/output/github-contribution-grid-snake-dark.svg">
@@ -22,8 +23,7 @@
 </picture>
 </p>
 
-
-
+<div align="center">About Me</div>
 <p align="center">
 <!-- https://github.com/anuraghazra/github-readme-stats -->
 <img align="center" height="162" src="https://github-readme-stats.vercel.app/api?username=yzlevol&theme=tokyonight&show_icons=true&hide_border=true" />
@@ -38,8 +38,10 @@
 <!-- https://github.com/anuraghazra/github-readme-stats -->
 <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=yzlevol&theme=tokyonight&hide_border=true&layout=donut-vertical&langs_count=6" />
 <br/>
+<br/>
 <!-- https://github.com/tandpfun/skill-icons -->
 <img align="center" src="https://skillicons.dev/icons?i=py,c,cpp,md,latex,matlab,windows,docker,vscode,visualstudio,pycharm&theme=light" />
+<br/>
 </p>
 
 <!-- https://github.com/badges/shields -->
