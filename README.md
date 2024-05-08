@@ -51,9 +51,12 @@
 ```rust
 From: 06 May 2024 - To: 07 May 2024
 
-Total Time: 26 mins
+Total Time: 1 hr 25 mins
 
-Other      58 mins         >>>>>>>>>>>>>>>>>--------   69.33 %
+Other      58 mins         █████████████████▒░░░░░░░   69.33 %
+Python     18 mins         █████▒░░░░░░░░░░░░░░░░░░░   21.59 %
+Markdown   4 mins          █▒░░░░░░░░░░░░░░░░░░░░░░░   05.79 %
+C++        2 mins          ▓░░░░░░░░░░░░░░░░░░░░░░░░   03.30 %
 ```
 
 <!--END_SECTION:waka-->
