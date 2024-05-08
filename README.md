@@ -1,6 +1,4 @@
 
-
-
 <!-- 头部图 -->
 <p align="center">
 <img src="https://capsule-render.vercel.app/api?type=waving&color=timeGradient&height=250&&section=header&text=Hi!%20I%20am%20yzlevol.&fontSize=50&fontAlign=50&fontAlignY=30&desc=-.-&descAlign=50&descSize=30&descAlignY=60&animation=twinkling" />
@@ -8,22 +6,16 @@
 
 <!-- https://github.com/yzlevol/readme-typing-svg -->
 <p align="center">
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=2000&pause=200&color=EAEAEA&vCenter=true&multiline=true&random=false&width=600&height=150&lines=Hi!+Welcome+to+my+GitHub+page.;I+am+a+sophomore+student++at+Tongji+University%2C;majoring+in+Computer+Science.&repeat=true" alt="Typing SVG" /></a>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=2000&pause=200&color=FFFFFFFF&vCenter=true&multiline=true&random=false&width=600&height=150&lines=Hi!+Welcome+to+my+GitHub+page.;I+am+a+sophomore+student++at+Tongji+University%2C;majoring+in+Computer+Science.&repeat=true" >
+  <source media="(prefers-color-scheme: light)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=2000&pause=200&color=000000FF&vCenter=true&multiline=true&random=false&width=600&height=150&lines=Hi!+Welcome+to+my+GitHub+page.;I+am+a+sophomore+student++at+Tongji+University%2C;majoring+in+Computer+Science.&repeat=true" >
+  <img alt="Introduction" src="" >
+</picture>
 </p>
 
 <!-- 贡献 -->
-<!--
-<p align="center">
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=24&duration=999&pause=200&color=EAEAEA&vCenter=true&repeat=false&random=false&width=600&height=40&lines=My+Contributions%3A" alt="Typing SVG" /></a>
-</p>
--->
-
-<!--
-<div align="center">My Github Contributions</div>
--->
 
 ## <div align="center">My Github Contributions</div>
-
 
 <p align="center">
 <picture>
@@ -32,9 +24,8 @@
   <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/yzlevol/yzlevol/output/github-contribution-grid-snake.svg">
 </picture>
 </p>
-<!--
-<div align="center">About Me</div> 
--->
+
+<!--<div align="center">About Me</div> -->
 
 ## <div align="center">About Me</div>
 
@@ -84,11 +75,7 @@ Assembly                 1 repo              ██████░░░░░�
 <!--END_SECTION:waka-->
 
 <!-- https://github.com/tandpfun/skill-icons -->
-<!--
-<div align="center">My Workflow</div>
--->
 ## <div align="center">My Workflow</div>
-
 
 <p align="center">
 <br/>
@@ -104,5 +91,9 @@ Assembly                 1 repo              ██████░░░░░�
 
 <!-- https://github.com/kyechan99/capsule-render -->
 <p align="center">
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Sedan+SC&size=28&duration=2000&pause=200&color=F7F7F7&center=true&vCenter=true&repeat=true&random=false&width=435&lines=Thank+you+for+visiting+!" alt="Typing SVG" /></a>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com?font=Sedan+SC&size=28&duration=2000&pause=200&color=FFFFFFFF&center=true&vCenter=true&repeat=true&random=false&width=435&lines=Thank+you+for+visiting+!" >
+  <source media="(prefers-color-scheme: light)" srcset="https://readme-typing-svg.demolab.com?font=Sedan+SC&size=28&duration=2000&pause=200&color=000000FF&center=true&vCenter=true&repeat=true&random=false&width=435&lines=Thank+you+for+visiting+!" >
+  <img alt="Thank you for visiting!" src="" >
+</picture>
 </p>
