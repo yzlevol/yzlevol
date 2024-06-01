@@ -46,26 +46,9 @@
 <br/>
 </p>
 
-<!--START_SECTION:waka-->
+<!--注释掉START_SECTION:waka-->
 
-```txt
-From: 06 May 2024 - To: 31 May 2024
-
-Total Time: 65 hrs 53 mins
-
-C++           18 hrs 34 mins  ███████░░░░░░░░░░░░░░░░░░   28.18 %
-JavaScript    18 hrs 8 mins   ███████░░░░░░░░░░░░░░░░░░   27.54 %
-Python        14 hrs 2 mins   █████▒░░░░░░░░░░░░░░░░░░░   21.30 %
-V             5 hrs 20 mins   ██░░░░░░░░░░░░░░░░░░░░░░░   08.11 %
-HTML          4 hrs 11 mins   █▓░░░░░░░░░░░░░░░░░░░░░░░   06.35 %
-Markdown      1 hr 44 mins    ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.65 %
-Assembly      1 hr 23 mins    ▓░░░░░░░░░░░░░░░░░░░░░░░░   02.12 %
-Text          36 mins         ▒░░░░░░░░░░░░░░░░░░░░░░░░   00.92 %
-PHP           35 mins         ▒░░░░░░░░░░░░░░░░░░░░░░░░   00.89 %
-Other         30 mins         ▒░░░░░░░░░░░░░░░░░░░░░░░░   00.76 %
-```
-
-<!--END_SECTION:waka-->
+<!--注释掉END_SECTION:waka-->
 
 <!-- https://github.com/tandpfun/skill-icons -->
 ## <div align="center">My Workflow</div>
