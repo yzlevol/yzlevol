@@ -64,8 +64,8 @@
 
 <!-- https://github.com/badges/shields -->
 <p align="center">
-<a href="https://github.com/flesymeb"><img src="https://img.shields.io/badge/GitHub-flesymeb-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"></a>
-<a href="mailto:hyoungyan@outlook.com"><img src="https://img.shields.io/badge/E--mail-hyoungyan@outlook.com-8F3B45?style=for-the-badge&logo=outlook&logoColor=white" alt="E-mail"></a>
+<a href="https://github.com/flesymeb"><img src="https://raw.githubusercontent.com/flesymeb/flesymeb/main/profile/github-badge.svg" alt="GitHub" height="28"></a>
+<a href="mailto:hyoungyan@outlook.com"><img src="https://raw.githubusercontent.com/flesymeb/flesymeb/main/profile/email-badge.svg" alt="E-mail" height="28"></a>
 </p>
 
 <!-- https://github.com/kyechan99/capsule-render -->
