@@ -7,8 +7,8 @@
 <!-- https://github.com/flesymeb/readme-typing-svg -->
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=1500&pause=300&color=FFFFFFF9&vCenter=true&multiline=true&random=false&width=720&height=150&lines=Hi!+Welcome+to+my+GitHub+page.;I+am+a+PhD+student+at+Shanghai+Jiao+Tong+University%2C;working+with+Shanghai+AI+Lab.&repeat=false" >
-  <source media="(prefers-color-scheme: light)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=1500&pause=300&color=000000FF&vCenter=true&multiline=true&random=false&width=720&height=150&lines=Hi!+Welcome+to+my+GitHub+page.;I+am+a+PhD+student+at+Shanghai+Jiao+Tong+University%2C;working+with+Shanghai+AI+Lab.&repeat=false" >
+  <source media="(prefers-color-scheme: dark)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=1500&pause=300&color=FFFFFFF9&vCenter=true&multiline=true&random=false&width=720&height=150&lines=Hi!+Welcome+to+my+GitHub+page.+%F0%9F%91%8B;I+am+a+PhD+student+at+Shanghai+Jiao+Tong+University+%F0%9F%8E%93;working+with+Shanghai+AI+Lab+%F0%9F%A7%A0.&repeat=false" >
+  <source media="(prefers-color-scheme: light)" srcset="https://readme-typing-svg.demolab.com?font=Fira+Code&duration=1500&pause=300&color=000000FF&vCenter=true&multiline=true&random=false&width=720&height=150&lines=Hi!+Welcome+to+my+GitHub+page.+%F0%9F%91%8B;I+am+a+PhD+student+at+Shanghai+Jiao+Tong+University+%F0%9F%8E%93;working+with+Shanghai+AI+Lab+%F0%9F%A7%A0.&repeat=false" >
   <img alt="Introduction" src="" >
 </picture>
 </p>
