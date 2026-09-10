@@ -6,7 +6,8 @@
 输出：profile/skill-icons.svg
 
 想增删图标：改下方 ICONS 列表，重新运行即可。
-注意：每个图标的内部 id 都会加唯一前缀，避免合并后渐变/裁剪路径互相串色。
+注意：每个图标的内部 id 都会加唯一前缀，避免合并后渐变/裁剪路径互相串色；
+单色源图标的 fill 由"单色填充"列指定（选品牌色系，避免一片黑）。
 """
 import io
 import os
@@ -29,15 +30,15 @@ ICONS = [
     ("Python",       "skillicons", "Python-Light", None),
     ("C++",          "skillicons", "CPP", None),
     ("TypeScript",   "skillicons", "TypeScript", None),
-    ("Rust",         "skillicons", "Rust", None),
+    ("Rust",         "skillicons", "Rust", "#CE422B"),
     ("Claude",       "simpleicons", "claude", "#D97757"),
-    ("Codex",        "openai-legacy", "openai", "#111111"),
+    ("Codex",        "openai-legacy", "openai", "#10A37F"),
     ("VS Code",      "skillicons", "VSCode-Light", None),
     ("Windows",      "skillicons", "Windows-Light", None),
     ("Ubuntu",       "skillicons", "Ubuntu-Light", None),
-    ("Markdown",     "skillicons", "Markdown-Light", None),
+    ("Markdown",     "skillicons", "Markdown-Light", "#1F3A5F"),
     ("LaTeX",        "skillicons", "LaTeX-Light", None),
-    ("Inkscape",     "simpleicons", "inkscape", "#111111"),
+    ("Inkscape",     "simpleicons", "inkscape", "#4B5B6B"),
 ]
 
 def fetch(url):
@@ -70,6 +71,11 @@ def namespace_ids(inner, prefix):
         inner = inner.replace(f'xlink:href="#{old}"', f'xlink:href="#{new}"')
     return inner
 
+def recolor_mono(inner, mono):
+    """把源图标整体改为指定单色：清除 fill/stroke 后统一上色。"""
+    inner = re.sub(r'\s(?:fill|stroke)="[^"]*"', '', inner)
+    return f'<g fill="{mono}">' + inner + "</g>"
+
 def main():
     rows = [ICONS[i:i + PERLINE] for i in range(0, len(ICONS), PERLINE)]
     W = PERLINE * TILE + (PERLINE - 1) * GAP
@@ -82,7 +88,7 @@ def main():
             x, y, w, h, inner = parse(fetch(SOURCES[src].format(fname)))
             inner = namespace_ids(inner, f"i{ri}_{ci}_")
             if mono:
-                inner = re.sub(r'<path(?![^>]*fill)', '<path fill="' + mono + '"', inner)
+                inner = recolor_mono(inner, mono)
             s = min(30.0 / w, 30.0 / h)
             px = x0 + ci * (TILE + GAP)
             py = ri * (TILE + GAP)
