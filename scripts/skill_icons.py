@@ -15,7 +15,7 @@ import re
 import urllib.request
 
 TILE, GAP, RX, BG = 48, 9, 11, "#F5F5F5"
-PERLINE = 6
+PERLINE = 12
 OUT = os.path.join(os.path.dirname(__file__), "..", "profile", "skill-icons.svg")
 
 RAW = "https://raw.githubusercontent.com"
