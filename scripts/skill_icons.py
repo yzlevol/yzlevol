@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""合成 My Tech Stack 图标带（skillicons 风格，白底磁贴）。
+"""合成 My Tech Stack 图标带（skillicons 风格，浅灰磁贴）。
 
 图标源：tandpfun/skill-icons 官方库 + simple-icons（AI 品牌图标，skillicons 无）。
 运行：python skill_icons.py   （需要能访问 raw.githubusercontent.com）
@@ -13,9 +13,8 @@ import os
 import re
 import urllib.request
 
-TILE, GAP, RX = 48, 9, 11
-BG, BORDER = "#FFFFFF", "#E5E7EB"
-PERLINE = 7
+TILE, GAP, RX, BG = 48, 9, 11, "#F5F5F5"
+PERLINE = 6
 OUT = os.path.join(os.path.dirname(__file__), "..", "profile", "skill-icons.svg")
 
 RAW = "https://raw.githubusercontent.com"
@@ -27,20 +26,18 @@ SOURCES = {
 
 # (显示名, 来源, 文件名, 单色填充或 None=保留原色)
 ICONS = [
-    ("Python",          "skillicons", "Python-Light", None),
-    ("C++",             "skillicons", "CPP", None),
-    ("PyTorch",         "skillicons", "PyTorch-Light", None),
-    ("Hugging Face",    "simpleicons", "huggingface", "#2F2F2F"),
-    ("Claude",          "simpleicons", "claude", "#D97757"),
-    ("Codex",           "openai-legacy", "openai", "#111111"),
-    ("Cursor",          "simpleicons", "cursor", "#111111"),
-    ("GitHub Copilot",  "simpleicons", "githubcopilot", "#111111"),
-    ("Docker",          "skillicons", "Docker", None),
-    ("Windows",         "skillicons", "Windows-Light", None),
-    ("Ubuntu",          "skillicons", "Ubuntu-Light", None),
-    ("LaTeX",           "skillicons", "LaTeX-Light", None),
-    ("Obsidian",        "skillicons", "Obsidian-Light", None),
-    ("VS Code",         "skillicons", "VSCode-Light", None),
+    ("Python",       "skillicons", "Python-Light", None),
+    ("C++",          "skillicons", "CPP", None),
+    ("TypeScript",   "skillicons", "TypeScript", None),
+    ("Rust",         "skillicons", "Rust", None),
+    ("Claude",       "simpleicons", "claude", "#D97757"),
+    ("Codex",        "openai-legacy", "openai", "#111111"),
+    ("VS Code",      "skillicons", "VSCode-Light", None),
+    ("Windows",      "skillicons", "Windows-Light", None),
+    ("Ubuntu",       "skillicons", "Ubuntu-Light", None),
+    ("Markdown",     "skillicons", "Markdown-Light", None),
+    ("LaTeX",        "skillicons", "LaTeX-Light", None),
+    ("Inkscape",     "simpleicons", "inkscape", "#111111"),
 ]
 
 def fetch(url):
@@ -93,7 +90,7 @@ def main():
             oy = py + (TILE - h * s) / 2 - y * s
             parts.append(
                 f'<g><title>{label}</title>'
-                f'<rect x="{px}" y="{py}" width="{TILE}" height="{TILE}" rx="{RX}" fill="{BG}" stroke="{BORDER}" stroke-width="1"/>'
+                f'<rect x="{px}" y="{py}" width="{TILE}" height="{TILE}" rx="{RX}" fill="{BG}"/>'
                 f'<g transform="translate({ox:.2f},{oy:.2f}) scale({s:.4f})">{inner}</g></g>'
             )
     parts.append("</svg>")
