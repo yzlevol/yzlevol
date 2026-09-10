@@ -58,8 +58,12 @@
 
 <p align="center">
 <br/>
-<!-- 图标带由 scripts/skill_icons.py 合成（skill-icons 官方库无 Claude/Codex 等 AI 图标），想调整列表编辑该脚本重新生成 -->
-<img align="center" src="https://raw.githubusercontent.com/flesymeb/flesymeb/main/profile/skill-icons.svg" />
+<!-- 图标带由 scripts/skill_icons.py 合成：skill-icons 官方库 + lobehub/lobe-icons（AI 品牌图标），无底色，深浅主题自适应 -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/flesymeb/flesymeb/main/profile/skill-icons-dark.svg">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/flesymeb/flesymeb/main/profile/skill-icons.svg">
+  <img align="center" src="https://raw.githubusercontent.com/flesymeb/flesymeb/main/profile/skill-icons.svg" />
+</picture>
 <br/>
 </p>
 
