@@ -25,7 +25,7 @@ jobs:
       # 创建入口: Settings -> Developer settings -> Personal access tokens
       # 然后: gh secret set PAT_1 -R Flesymeb/flesymeb
       - name: Generate stats card
-        uses: soulteary/github-readme-stats-action@v1.0.0
+        uses: stats-organization/github-readme-stats-action@v2.0.2
         with:
           card: stats
           options: "username=flesymeb&show_icons=true&hide_border=true&theme=tokyonight"
@@ -34,7 +34,7 @@ jobs:
 
       # wakatime 卡读取公开数据，GITHUB_TOKEN 就够
       - name: Generate wakatime card
-        uses: soulteary/github-readme-stats-action@v1.0.0
+        uses: stats-organization/github-readme-stats-action@v2.0.2
         with:
           card: wakatime
           options: "username=hyoung&hide_border=true&layout=compact&langs_count=6&theme=tokyonight"
