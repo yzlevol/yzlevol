@@ -54,11 +54,12 @@
 <!--注释掉END_SECTION:waka-->
 
 <!-- https://github.com/tandpfun/skill-icons -->
-## <div align="center">My Workflow</div>
+## <div align="center">My Tech Stack</div>
 
 <p align="center">
 <br/>
-<img align="center" src="https://skillicons.dev/icons?i=py,cpp,windows,ubuntu,docker,md,latex,obsidian,vscode,visualstudio,pycharm&theme=light" />
+<!-- 图标带由 scripts/skill_icons.py 合成（skill-icons 官方库无 Claude/Codex 等 AI 图标），想调整列表编辑该脚本重新生成 -->
+<img align="center" src="https://raw.githubusercontent.com/flesymeb/flesymeb/main/profile/skill-icons.svg" />
 <br/>
 </p>
 
