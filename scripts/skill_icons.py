@@ -1,44 +1,46 @@
 #!/usr/bin/env python3
-"""合成 My Tech Stack 图标带（skillicons 风格，浅灰磁贴）。
+"""合成 My Tech Stack 图标带（无底色透明版，深/浅主题各一份）。
 
-图标源：tandpfun/skill-icons 官方库 + simple-icons（AI 品牌图标，skillicons 无）。
-运行：python skill_icons.py   （需要能访问 raw.githubusercontent.com）
-输出：profile/skill-icons.svg
+图标源：
+  - tandpfun/skill-icons 官方库（语言/系统/编辑器，保留原色）
+  - lobehub/lobe-icons 静态包（AI 品牌彩色图标：Claude、Codex 等）
+  - simple-icons（个别补充）
+运行：python skill_icons.py   （需能访问 raw.githubusercontent.com 与 cdn.jsdelivr.net）
+输出：profile/skill-icons.svg（浅色主题）与 profile/skill-icons-dark.svg（深色主题）
 
-想增删图标：改下方 ICONS 列表，重新运行即可。
-注意：每个图标的内部 id 都会加唯一前缀，避免合并后渐变/裁剪路径互相串色；
-单色源图标的 fill 由"单色填充"列指定（选品牌色系，避免一片黑）。
+想增删图标：改下方 ICONS 列表（显示名, 来源, 文件名, 浅色填充, 深色填充）。
+注意：单色重染仅对单一路径的源安全（simple-icons / Rust 齿轮）；
+skill-icons 的复合图标（如 Markdown 徽章）禁止重染，会变实心色块。
 """
 import io
 import os
 import re
 import urllib.request
 
-TILE, GAP, RX, BG = 48, 9, 11, "#F5F5F5"
-PERLINE = 12
-OUT = os.path.join(os.path.dirname(__file__), "..", "profile", "skill-icons.svg")
+SIZE, GAP = 40, 10
+OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "profile")
 
 RAW = "https://raw.githubusercontent.com"
 SOURCES = {
     "skillicons": RAW + "/tandpfun/skill-icons/main/icons/{}.svg",
     "simpleicons": RAW + "/simple-icons/simple-icons/develop/icons/{}.svg",
-    "openai-legacy": RAW + "/simple-icons/simple-icons/13.0.0/icons/openai.svg",
+    "lobeicons": "https://cdn.jsdelivr.net/npm/@lobehub/icons-static-svg@1.95.0/icons/{}.svg",
 }
 
-# (显示名, 来源, 文件名, 单色填充或 None=保留原色)
+# (显示名, 来源, 文件名, 浅色主题单色填充, 深色主题单色填充；None=保留原色)
 ICONS = [
-    ("Python",       "skillicons", "Python-Light", None),
-    ("C++",          "skillicons", "CPP", None),
-    ("TypeScript",   "skillicons", "TypeScript", None),
-    ("Rust",         "skillicons", "Rust", None),
-    ("Claude",       "simpleicons", "claude", "#D97757"),
-    ("Codex",        "openai-legacy", "openai", "#10A37F"),
-    ("VS Code",      "skillicons", "VSCode-Light", None),
-    ("Windows",      "skillicons", "Windows-Light", None),
-    ("Ubuntu",       "skillicons", "Ubuntu-Light", None),
-    ("Markdown",     "skillicons", "Markdown-Light", None),
-    ("LaTeX",        "skillicons", "LaTeX-Light", None),
-    ("Inkscape",     "simpleicons", "inkscape", "#4B5B6B"),
+    ("Python",     "skillicons", "Python-Light", None, None),
+    ("C++",        "skillicons", "CPP", None, None),
+    ("TypeScript", "skillicons", "TypeScript", None, None),
+    ("Rust",       "skillicons", "Rust", None, "#D4D4D4"),  # 黑齿轮在深色背景不可见
+    ("Claude",     "lobeicons", "claude-color", None, None),
+    ("Codex",      "lobeicons", "codex-color", None, None),
+    ("VS Code",    "skillicons", "VSCode-Light", None, None),
+    ("Windows",    "skillicons", "Windows-Light", None, None),
+    ("Ubuntu",     "skillicons", "Ubuntu-Light", None, None),
+    ("Markdown",   "skillicons", "Markdown-Light", None, None),
+    ("LaTeX",      "skillicons", "LaTeX-Light", None, None),
+    ("Inkscape",   "simpleicons", "inkscape", "#4B5B6B", "#4B5B6B"),
 ]
 
 def fetch(url):
@@ -72,38 +74,36 @@ def namespace_ids(inner, prefix):
     return inner
 
 def recolor_mono(inner, mono):
-    """整体重上色，仅限 simple-icons 单一路径源。
-    skill-icons 源含镂空/多路径结构，强染会变实心黑块，勿对其使用。"""
+    """整体重上色（仅限单一路径源），清除 fill/stroke 后统一上色。"""
     inner = re.sub(r'\s(?:fill|stroke)="[^"]*"', '', inner)
     return f'<g fill="{mono}">' + inner + "</g>"
 
-def main():
-    rows = [ICONS[i:i + PERLINE] for i in range(0, len(ICONS), PERLINE)]
-    W = PERLINE * TILE + (PERLINE - 1) * GAP
-    H = len(rows) * TILE + (len(rows) - 1) * GAP
+def build(theme):
+    """theme: 'light' 或 'dark'，返回 SVG 字符串。"""
+    n = len(ICONS)
+    W = n * SIZE + (n - 1) * GAP
+    H = SIZE
     parts = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="tech stack icons">']
-    for ri, row in enumerate(rows):
-        rowW = len(row) * TILE + (len(row) - 1) * GAP
-        x0 = (W - rowW) / 2
-        for ci, (label, src, fname, mono) in enumerate(row):
-            x, y, w, h, inner = parse(fetch(SOURCES[src].format(fname)))
-            inner = namespace_ids(inner, f"i{ri}_{ci}_")
-            if mono:
-                inner = recolor_mono(inner, mono)
-            s = min(30.0 / w, 30.0 / h)
-            px = x0 + ci * (TILE + GAP)
-            py = ri * (TILE + GAP)
-            ox = px + (TILE - w * s) / 2 - x * s
-            oy = py + (TILE - h * s) / 2 - y * s
-            parts.append(
-                f'<g><title>{label}</title>'
-                f'<rect x="{px}" y="{py}" width="{TILE}" height="{TILE}" rx="{RX}" fill="{BG}"/>'
-                f'<g transform="translate({ox:.2f},{oy:.2f}) scale({s:.4f})">{inner}</g></g>'
-            )
+    for i, (label, src, fname, mono_light, mono_dark) in enumerate(ICONS):
+        mono = mono_light if theme == "light" else mono_dark
+        x, y, w, h, inner = parse(fetch(SOURCES[src].format(fname)))
+        inner = namespace_ids(inner, f"i{i}_")
+        if mono:
+            inner = recolor_mono(inner, mono)
+        s = min(SIZE / w, SIZE / h)
+        px = i * (SIZE + GAP)
+        ox = px + (SIZE - w * s) / 2 - x * s
+        oy = (SIZE - h * s) / 2 - y * s
+        parts.append(f'<g><title>{label}</title><g transform="translate({ox:.2f},{oy:.2f}) scale({s:.4f})">{inner}</g></g>')
     parts.append("</svg>")
-    with io.open(OUT, "w", encoding="utf-8", newline="\n") as f:
-        f.write("\n".join(parts))
-    print(f"生成 {OUT}: {W}x{H}, {len(ICONS)} 图标, {len(rows)} 行")
+    return "\n".join(parts)
+
+def main():
+    for theme, name in (("light", "skill-icons.svg"), ("dark", "skill-icons-dark.svg")):
+        out = os.path.join(OUT_DIR, name)
+        with io.open(out, "w", encoding="utf-8", newline="\n") as f:
+            f.write(build(theme))
+        print(f"生成 {out} ({theme})")
 
 if __name__ == "__main__":
     main()
