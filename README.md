@@ -39,7 +39,7 @@
   </br>
   <!-- 活动图表由 scripts/activity_graph.py 每日生成（rogue 主题复刻，原服务 github-readme-activity-graph 已停摆）
        备选：https://github.com/DenverCoder1/github-readme-streak-stats 的 streak 卡 -->
-  <img align="center" width="842" style="display: inline-block;" src="https://raw.githubusercontent.com/flesymeb/flesymeb/main/profile/activity-graph.svg" />
+  <img align="center" width="831" style="display: inline-block;" src="https://raw.githubusercontent.com/flesymeb/flesymeb/main/profile/activity-graph.svg" />
   
   <!-- https://github.com/anuraghazra/github-readme-stats 卡片由 .github/workflows/stats.yml 每日生成到本仓库，不再依赖公共实例 -->
   <img align="center" height="155" style="display: inline-block; margin-right: 0;" src="https://raw.githubusercontent.com/flesymeb/flesymeb/main/profile/stats.svg" />
