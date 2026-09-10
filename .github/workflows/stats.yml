@@ -37,7 +37,7 @@ jobs:
         uses: stats-organization/github-readme-stats-action@v2.0.2
         with:
           card: wakatime
-          options: "username=hyoung&hide_border=true&layout=compact&langs_count=6&theme=tokyonight"
+          options: "username=hyoungoptions: "username=hyoung&hide_border=true&layout=compact&langs_count=6&theme=tokyonight"hide_border=true&layout=compact&langs_count=6&card_width=445&theme=tokyonight"
           path: profile/wakatime.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
