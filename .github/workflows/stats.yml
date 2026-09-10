@@ -33,7 +33,7 @@ jobs:
           token: ${{ secrets.PAT_1 }}
 
       # wakatime 卡读取公开数据，GITHUB_TOKEN 就够
-      # card_width=445：保证与 stats 卡并排显示不换行
+      # card_width=440：与 stats 卡同比例（2.667），两卡行总宽与图表行一致
       - name: Generate wakatime card
         uses: stats-organization/github-readme-stats-action@v2.0.2
         with:
