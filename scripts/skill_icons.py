@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
-"""合成 My Tech Stack 图标带（skillicons 风格）。
+"""合成 My Tech Stack 图标带（skillicons 风格，白底磁贴）。
 
 图标源：tandpfun/skill-icons 官方库 + simple-icons（AI 品牌图标，skillicons 无）。
 运行：python skill_icons.py   （需要能访问 raw.githubusercontent.com）
 输出：profile/skill-icons.svg
 
-想增删图标：改下方 ICONS 列表（名字, 类型, 单色填充），重新运行即可。
+想增删图标：改下方 ICONS 列表，重新运行即可。
+注意：每个图标的内部 id 都会加唯一前缀，避免合并后渐变/裁剪路径互相串色。
 """
 import io
 import os
 import re
 import urllib.request
 
-TILE, GAP, RX, BG = 48, 9, 11, "#F5F5F5"
+TILE, GAP, RX = 48, 9, 11
+BG, BORDER = "#FFFFFF", "#E5E7EB"
 PERLINE = 7
 OUT = os.path.join(os.path.dirname(__file__), "..", "profile", "skill-icons.svg")
 
@@ -49,7 +51,7 @@ def fetch(url):
 def parse(svg):
     m = re.search(r'viewBox="([-\d\.\s]+)"', svg)
     if m:
-        x, y, w, h = [float(v) for v in m.groups()[0].split()] if False else [float(v) for v in m.group(1).split()]
+        x, y, w, h = [float(v) for v in m.group(1).split()]
     else:
         w = float(re.search(r'width="(\d+)', svg).group(1))
         h = float(re.search(r'height="(\d+)', svg).group(1))
@@ -58,6 +60,18 @@ def parse(svg):
     inner = re.sub(r'</svg>\s*$', '', inner).strip()
     inner = re.sub(r'<!--.*?-->', '', inner, flags=re.S)
     return x, y, w, h, inner
+
+def namespace_ids(inner, prefix):
+    """给图标内部的 id 及其引用加前缀，防止合并后跨图标串色。"""
+    for old in sorted(set(re.findall(r'id="([^"]+)"', inner)), key=len, reverse=True):
+        new = prefix + old
+        inner = inner.replace(f'id="{old}"', f'id="{new}"')
+        inner = inner.replace(f'url(#{old})', f'url(#{new})')
+        inner = inner.replace(f"url('#{old}')", f"url('#{new}')")
+        inner = inner.replace(f'url("#{old}")', f'url("#{new}")')
+        inner = inner.replace(f'href="#{old}"', f'href="#{new}"')
+        inner = inner.replace(f'xlink:href="#{old}"', f'xlink:href="#{new}"')
+    return inner
 
 def main():
     rows = [ICONS[i:i + PERLINE] for i in range(0, len(ICONS), PERLINE)]
@@ -68,8 +82,8 @@ def main():
         rowW = len(row) * TILE + (len(row) - 1) * GAP
         x0 = (W - rowW) / 2
         for ci, (label, src, fname, mono) in enumerate(row):
-            url = SOURCES[src].format(fname)
-            x, y, w, h, inner = parse(fetch(url))
+            x, y, w, h, inner = parse(fetch(SOURCES[src].format(fname)))
+            inner = namespace_ids(inner, f"i{ri}_{ci}_")
             if mono:
                 inner = re.sub(r'<path(?![^>]*fill)', '<path fill="' + mono + '"', inner)
             s = min(30.0 / w, 30.0 / h)
@@ -77,11 +91,14 @@ def main():
             py = ri * (TILE + GAP)
             ox = px + (TILE - w * s) / 2 - x * s
             oy = py + (TILE - h * s) / 2 - y * s
-            parts.append(f'<g><title>{label}</title><rect x="{px}" y="{py}" width="{TILE}" height="{TILE}" rx="{RX}" fill="{BG}"/><g transform="translate({ox:.2f},{oy:.2f}) scale({s:.4f})">{inner}</g></g>')
+            parts.append(
+                f'<g><title>{label}</title>'
+                f'<rect x="{px}" y="{py}" width="{TILE}" height="{TILE}" rx="{RX}" fill="{BG}" stroke="{BORDER}" stroke-width="1"/>'
+                f'<g transform="translate({ox:.2f},{oy:.2f}) scale({s:.4f})">{inner}</g></g>'
+            )
     parts.append("</svg>")
-    out = "\n".join(parts)
     with io.open(OUT, "w", encoding="utf-8", newline="\n") as f:
-        f.write(out)
+        f.write("\n".join(parts))
     print(f"生成 {OUT}: {W}x{H}, {len(ICONS)} 图标, {len(rows)} 行")
 
 if __name__ == "__main__":
