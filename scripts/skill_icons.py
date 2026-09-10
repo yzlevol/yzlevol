@@ -30,13 +30,13 @@ ICONS = [
     ("Python",       "skillicons", "Python-Light", None),
     ("C++",          "skillicons", "CPP", None),
     ("TypeScript",   "skillicons", "TypeScript", None),
-    ("Rust",         "skillicons", "Rust", "#CE422B"),
+    ("Rust",         "skillicons", "Rust", None),
     ("Claude",       "simpleicons", "claude", "#D97757"),
     ("Codex",        "openai-legacy", "openai", "#10A37F"),
     ("VS Code",      "skillicons", "VSCode-Light", None),
     ("Windows",      "skillicons", "Windows-Light", None),
     ("Ubuntu",       "skillicons", "Ubuntu-Light", None),
-    ("Markdown",     "skillicons", "Markdown-Light", "#1F3A5F"),
+    ("Markdown",     "skillicons", "Markdown-Light", None),
     ("LaTeX",        "skillicons", "LaTeX-Light", None),
     ("Inkscape",     "simpleicons", "inkscape", "#4B5B6B"),
 ]
@@ -72,7 +72,8 @@ def namespace_ids(inner, prefix):
     return inner
 
 def recolor_mono(inner, mono):
-    """把源图标整体改为指定单色：清除 fill/stroke 后统一上色。"""
+    """整体重上色，仅限 simple-icons 单一路径源。
+    skill-icons 源含镂空/多路径结构，强染会变实心黑块，勿对其使用。"""
     inner = re.sub(r'\s(?:fill|stroke)="[^"]*"', '', inner)
     return f'<g fill="{mono}">' + inner + "</g>"
 
