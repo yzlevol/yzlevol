@@ -28,7 +28,7 @@ jobs:
         uses: stats-organization/github-readme-stats-action@v2.0.2
         with:
           card: stats
-          options: "username=flesymeb&show_icons=true&hide_border=true&theme=tokyonight"
+          options: "username=flesymeb&show_icons=true&hide_border=true&card_width=520&theme=tokyonight"
           path: profile/stats.svg
           token: ${{ secrets.PAT_1 }}
 
@@ -38,7 +38,7 @@ jobs:
         uses: stats-organization/github-readme-stats-action@v2.0.2
         with:
           card: wakatime
-          options: "username=hyoung&hide_border=true&layout=compact&langs_count=6&card_width=445&theme=tokyonight"
+          options: "username=hyoung&hide_border=true&layout=compact&langs_count=6&card_width=440&theme=tokyonight"
           path: profile/wakatime.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
