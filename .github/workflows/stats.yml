@@ -19,16 +19,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # generates the GitHub stats card as a local SVG, no external service needed
+      # stats 卡需要 PAT_1 secret（classic PAT，勾选 read:user 即可）：
+      # 未配置时会回退到 GITHUB_TOKEN，GraphQL 查询用户数据会失败，
+      # 生成的错误卡会在下方提交步骤被自动丢弃，不会覆盖已有好卡片。
+      # 创建入口: Settings -> Developer settings -> Personal access tokens
+      # 然后: gh secret set PAT_1 -R Flesymeb/flesymeb
       - name: Generate stats card
         uses: soulteary/github-readme-stats-action@v1.0.0
         with:
           card: stats
           options: "username=flesymeb&show_icons=true&hide_border=true&theme=tokyonight"
           path: profile/stats.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT_1 }}
 
-      # generates the WakaTime card as a local SVG
+      # wakatime 卡读取公开数据，GITHUB_TOKEN 就够
       - name: Generate wakatime card
         uses: soulteary/github-readme-stats-action@v1.0.0
         with:
@@ -39,6 +43,13 @@ jobs:
 
       - name: Commit and push
         run: |
+          # 丢弃生成失败的卡片，避免覆盖仓库里已有的好版本
+          for f in profile/stats.svg profile/wakatime.svg; do
+            if [ -f "$f" ] && grep -q "Something went wrong" "$f"; then
+              echo "::warning::$f 生成失败（多半是 PAT_1 未配置），保留旧版本"
+              git checkout -- "$f" 2>/dev/null || rm -f "$f"
+            fi
+          done
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add profile/
