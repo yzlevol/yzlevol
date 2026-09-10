@@ -33,11 +33,12 @@ jobs:
           token: ${{ secrets.PAT_1 }}
 
       # wakatime 卡读取公开数据，GITHUB_TOKEN 就够
+      # card_width=445：保证与 stats 卡并排显示不换行
       - name: Generate wakatime card
         uses: stats-organization/github-readme-stats-action@v2.0.2
         with:
           card: wakatime
-          options: "username=hyoung&hide_border=true&layout=compact&langs_count=6&card_width=445&theme=tokyonight"username=hyoung&hide_border=true&layout=compact&langs_count=6&theme=tokyonight"hide_border=true&layout=compact&langs_count=6&card_width=445&theme=tokyonight"
+          options: "username=hyoung&hide_border=true&layout=compact&langs_count=6&card_width=445&theme=tokyonight"
           path: profile/wakatime.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
